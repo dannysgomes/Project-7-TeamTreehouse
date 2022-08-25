@@ -1,0 +1,15 @@
+{
+  "git.confirmSync": false,
+  "diffEditor.renderSideBySide": false,
+  "workbench.editor.enablePreview": false,
+  // enable globally (here: format on save)
+"editor.formatOnSave": true,
+// enable per-language (here: Prettier as formatter)
+"[javascript]": {
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+},
+"[html]": {
+  "editor.defaultFormatter": "vscode.html-language-features"
+},
+"html.format.contentUnformatted": ""
+}
