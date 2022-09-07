@@ -240,15 +240,7 @@ body {
   .traffic-nav-link {
     list-style: none;
   }
-  
-  .navigation {
-    grid-area: navigation;
-  }
-  
-  .main {
-    grid-area: main;
-  }
-  
+ 
   .setting-1,
   .setting-2 {
     display: flex;
@@ -261,7 +253,6 @@ body {
   .switch {
     position: relative;
     display: inline-block;
-    text-decoration:;
     width: 80px;
     height: 27.5px;
     border: 0;
@@ -372,29 +363,92 @@ body {
     align-items: center;
 }
 
+.header {
+    grid-area: header;
+}
+
+.navigation {
+    grid-area: navigation;
+}
+
+.main {
+    grid-area: main;
+    display: grid;
+    
+}
+
+.widget-container-full, .widget-container-half {
+    width: 95vw;
+} 
 
 
+@media (min-width: 768px) {
 
-
-
-
-
-  @media (min-width: 768px) {
     .grid-container {
       grid-template-columns: 55px 1fr;
       grid-template-areas:
         "header header"
         "navigation main";
     }
-  }
-  
-  .main {
-    display: grid;
-  }
-  
-  @media (min-width: 768px) {
-    .main {
-      grid-template-columns: 50%;
+    .navigation {
+        height: auto;
     }
- }
+
+    .main {
+        grid-template-columns: 50%;
+    }
+    
+    .traffic, .social-container {
+        grid-column: 1 / span 2;
+    }
+
+    .daily, .members, .message {
+        grid-column: 1 / span 2;
+    }
+
+    .mobile, .activity, .settings {
+        grid-column: 1 / span 2;
+    }
+
+    #navigation-group {
+        flex-direction: column;
+        margin: 7px;
+    }
+    .icon-top {
+        padding-bottom: 15px;
+    }
+    
+    .header {
+        justify-content: space-between;
+    }
+
+    #profile {
+        padding-right: 15px;
+    }
+
+    .main-header {
+        display: flex;
+    }
+
+    .alert {
+        grid-column: 1 / span 2;
+        
+    }
+
+    .alert-button {
+        width: 100%;
+        margin: 0 15px;
+        text-align: left;
+    }
+
+    hr {
+        grid-column: 1 / span 2;
+    }
+
+    .social-media-wrapper {
+        width: 26%;
+        display: inline-flex;
+        margin: 0 7.5px 15px 7.5px;
+    }
+}
   
