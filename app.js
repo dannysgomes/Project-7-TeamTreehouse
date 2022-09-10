@@ -1,7 +1,9 @@
+const bell = document.getElementById("notifications");
 const alertBanner = document.getElementById("alert");
 
-//create the html for the banner
-alertBanner.innerHTML = `
+bell.addEventListener("click", (e) => {
+  const element = e.target;
+  alertBanner.innerHTML = `
   <div class="alert-banner">
       <p>
         <strong>Alert:</strong> You have <strong>6</strong> overdue tasks to
@@ -10,6 +12,13 @@ alertBanner.innerHTML = `
       <p class="alert-banner-close">x</p>
  </div>
   `;
+  alertBanner.style.display = "flex";
+  console.log("test", element);
+  console.log("alert banner", alertBanner);
+});
+
+//create the html for the banner
+
 alertBanner.addEventListener("click", (e) => {
   const element = e.target;
   if (element.classList.contains("alert-banner-close")) {
@@ -103,7 +112,7 @@ let dailyChart = new Chart(dailyCanvas, {
 });
 
 // doughnut chart
-const mobileCanvas = document.getElementById("mobile-chart");
+const mobileCanvas = document.getElementById("mobile-users-chart");
 
 const mobileData = {
   labels: ["Desktop", "Tablet", "Phones"],

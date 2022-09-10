@@ -5,6 +5,9 @@
     <title>Web App Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="styles.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
+        integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </head>
 
@@ -288,14 +291,15 @@
             <!-- custom CSS toggle code -->
 
             <!-- custom CSS toggle code -->
-
-            <select class="form-field" id="timezone">
-                <option disabled selected>Select a Timezone</option>
-                <option>Eastern</option>
-                <option>Central</option>
-                <option>Mountain</option>
-                <option>Pacific</option>
-            </select>
+            <div class="select-wrap">
+                <select class="form-field" id="timezone">
+                    <option disabled selected>Select a Timezone</option>
+                    <option>Eastern</option>
+                    <option>Central</option>
+                    <option>Mountain</option>
+                    <option>Pacific</option>
+                </select>
+            </div>
             <div class="settings-button">
                 <button class="button-primary" id="save">SAVE</button>
                 <button class="button-disabled" id="cancel">CANCEL</button>
