@@ -76,19 +76,45 @@ button {
   border: rgb(36, 36, 58);
 }
 
-.alert-banner {
-  display: flex;
+.notification-light {
+  color: rgb(3, 210, 3);
+  padding: none;
+  }
+
+  #notifications {
+    display: flex;
+    flex-direction: row;
+  }
+
+.alert {
+  flex-direction: column;
+  width: 100%;
+  
+}
+
+#notificationOne, #notificationTwo{
+  align-items: center;
+  display: none;
   font-size: 15px;
   flex-direction: row;
   justify-content: space-between;
   height: 30px;
+  text-align: center;
   padding: 10px;
+  position: relative;
   background-color: rgb(100, 100, 162);
   border-radius: 0.5em;
   border: none;
   color: white;
+  width: 100%;
   text-align: center;
 }
+  
+  .alert-banner-close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+  }
 
 .section-label {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
@@ -97,7 +123,7 @@ button {
 }
 
 .navigation {
-  background: rgb(36, 36, 58);
+  background: rgb(69, 69, 108);
   height: 45px;
   padding-top: 10px;
   margin: 0 -15px 0 -15px;
@@ -108,6 +134,13 @@ button {
   justify-content: space-evenly;
 }
 
+#hourlyFilterButton {
+  background: green;
+  color: white;
+  border-radius: 50%;
+}
+
+
 .icon-top {
   width: 35px;
   height: 35px;
@@ -116,7 +149,7 @@ button {
 .avatar {
   max-width: 40px;
   max-height: 40px;
-  border-radius: 50%;
+  border-radius: 22px;
   padding: 5px;
 }
 
@@ -143,7 +176,6 @@ button {
 #navicon {
   fill: white;
 }
-
 .social-media-wrapper {
   border-style: solid;
   border-width: 1px;
@@ -184,6 +216,7 @@ button {
 .social-count {
   font-size: 2.5rem;
   margin: 0;
+  color:rgb(103, 103, 103);
 }
 
 .members-container,
@@ -240,6 +273,17 @@ button {
 .button-primary-send {
   display: flex;
   justify-content: space-around;
+}
+
+.traffic, .daily, .mobile, .social-container, .members, .activity, .message, .settings {
+  border-bottom: 2px solid rgb(200, 197, 197);
+  margin-left: -15px;
+  padding: 25px;
+}
+
+.members-container {
+  padding: 25px;
+  border-bottom: 2px solid rgb(200, 197, 197);
 }
 
 .traffic-nav {
@@ -395,6 +439,10 @@ input:checked + .slider:before {
   width: 95vw;
 }
 
+#traffic-hourly-chart {
+  display: flex;
+}
+
 @media (min-width: 768px) {
   .main {
     grid-template-columns: 50%;
@@ -420,6 +468,10 @@ input:checked + .slider:before {
     margin: 0 0 0 -15px;
   }
 
+  #navigation-group {
+    position: fixed;
+  }
+
  
   .traffic-header {
     display: flex;
@@ -431,20 +483,17 @@ input:checked + .slider:before {
   }
 
   .traffic,
-  .social-container {
+  .social-container,  .members, .activity, .message, .settings {
     grid-column: 1 / span 2;
   }
 
-  .daily,
-  .members,
-  .message {
+  .daily   {
     grid-column: 1 / span 1;
-  }
+      }
 
-  .mobile,
-  .activity,
-  .settings {
+  .mobile   {
     grid-column: 2 / span 1;
+    border-left: 2px solid rgb(200, 197, 197);
   }
 
   #navigation-group {
@@ -482,6 +531,10 @@ input:checked + .slider:before {
     grid-column: 1 / span 2;
   }
 
+  .switch {
+    margin-right: 60%;
+  }
+
   .social-media-wrapper {
     width: 26%;
     display: inline-flex;
@@ -491,6 +544,7 @@ input:checked + .slider:before {
   .social-container {
     display: inline-flex;
     flex-direction: row;
+    justify-content: space-between
   }
 
   .members-container {
@@ -498,6 +552,12 @@ input:checked + .slider:before {
     flex-direction: row;
     text-align: left;
     justify-content: space-between;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+  }
+
+  .activity-container:last-child {
+    border-bottom: none;
   }
 
   .members-text {
@@ -507,6 +567,8 @@ input:checked + .slider:before {
     margin-left: 15px;
   }
 
+  
+
   .message,
   .settings,
   .activity,
@@ -515,5 +577,21 @@ input:checked + .slider:before {
   }
 }
 
-@media (min-width: 10px) {
+@media (min-width: 1024px) {
+  .members, .message {
+    grid-column: 1 / span 1;
+  }
+
+  .activity, .settings {
+    grid-column: 2 / span 1;
+    border-left: 2px solid rgb(200, 197, 197);
+  }
+
+  .message {
+    margin-right: 15px;
+  }
+
+  .switch {
+    margin-right: 40%;
+  }
 }

@@ -1,18 +1,29 @@
 const bell = document.getElementById("notifications");
 const alertBanner = document.getElementById("alert");
+const notificationOne = document.getElementById("notificationOne");
+const notificationTwo = document.getElementById("notificationTwo");
+const hourlyFilterButton = document.getElementById("hourlyFilterButton");
+const dailyFilterButton = document.getElementById("dailyFilterButton");
+const weeklyFilterButton = document.getElementById("weeklyFilterButton");
+const monthlyFilterButton = document.getElementById("monthlyFilterButton");
 
 bell.addEventListener("click", (e) => {
   const element = e.target;
-  alertBanner.innerHTML = `
-  <div class="alert-banner">
+  notificationOne.innerHTML = `
       <p>
         <strong>Alert:</strong> You have <strong>6</strong> overdue tasks to
         complete
       </p>
-      <p class="alert-banner-close">x</p>
- </div>
+      <p class="closeNotificationOne">X</p>`;
+  notificationTwo.innerHTML = `
+      <p>
+        <strong>Alert:</strong> You have <strong>2</strong> unread emails
+      </p>
+      <p class="closeNotificationTwo">X</p>
   `;
   alertBanner.style.display = "flex";
+  notificationOne.style.display = "flex";
+  notificationTwo.style.display = "flex";
   console.log("test", element);
   console.log("alert banner", alertBanner);
 });
@@ -21,15 +32,30 @@ bell.addEventListener("click", (e) => {
 
 alertBanner.addEventListener("click", (e) => {
   const element = e.target;
-  if (element.classList.contains("alert-banner-close")) {
-    alertBanner.style.display = "none";
+  if (element.classList.contains("closeNotificationOne")) {
+    notificationOne.style.display = "none";
+  }
+  if (element.classList.contains("closeNotificationTwo")) {
+    notificationTwo.style.display = "none";
   }
 });
 
 //line graph
-const trafficCanvas = document.getElementById("traffic-chart");
+const trafficHourlyCanvas = document.getElementById("traffic-hourly-chart");
+/*
+const trafficDailyCanvas = document.getElementById("traffic-daily-chart");
+const trafficWeeklyCanvas = document.getElementById("traffic-weekly-chart");
+const trafficMonthlyCanvas = document.getElementById("traffic-monthly-chart");
+*/
 
-let trafficData = {
+const hourlyLineData = {
+  datasets: [
+    {
+      data: [750, 1250, 1000, 2000, 1500, 1750, 1250, 1850, 2250, 1500, 2500],
+      backgroundColor: "rgba(116, 119, 191, .3)",
+      borderWidth: 1,
+    },
+  ],
   labels: [
     "16-22",
     "23-29",
@@ -43,15 +69,74 @@ let trafficData = {
     "18-24",
     "25-31",
   ],
+};
+
+/*
+const dailyLineData = {
   datasets: [
     {
-      data: [750, 1250, 1000, 2000, 1500, 1750, 1250, 1850, 2250, 1500, 2500],
+      data: [2000, 1250, 500, 1000, 1200, 1100, 10],
       backgroundColor: "rgba(116, 119, 191, .3)",
       borderWidth: 1,
     },
   ],
+  labels: [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ],
 };
 
+/*
+let weeklyLineData = {
+  datasets: [
+    {
+      data: [300, 600, 250, 400, 500, 1000, 900, 1900, 2100, 1500, 1800],
+      backgroundColor: "rgba(116, 119, 191, .3)",
+      borderWidth: 1,
+    },
+  ],
+  labels: [
+    "16-22",
+    "23-29",
+    "30-5",
+    "6-12",
+    "13-19",
+    "20-26",
+    "27-3",
+    "4-10",
+    "11-17",
+    "18-24",
+    "25-31",
+  ],
+};
+let monthlyLineData = {
+  datasets: [
+    {
+      data: [2500, 1250, 500, 500, 500, 1100, 900, 1000, 2000, 1700, 1500],
+      backgroundColor: "rgba(116, 119, 191, .3)",
+      borderWidth: 1,
+    },
+  ],
+  labels: [
+    "16-22",
+    "23-29",
+    "30-5",
+    "6-12",
+    "13-19",
+    "20-26",
+    "27-3",
+    "4-10",
+    "11-17",
+    "18-24",
+    "25-31",
+  ],
+};
+*/
 let trafficOptions = {
   backgroundColor: "rgba(112, 104, 201, .5)",
   fill: true,
@@ -71,11 +156,62 @@ let trafficOptions = {
   },
 };
 
-let trafficChart = new Chart(trafficCanvas, {
-  type: "line",
-  data: trafficData,
-  options: trafficOptions,
+console.log("hourlyFilterButton", trafficHourlyCanvas);
+
+let trafficChart;
+//console.log("test", trafficChart);
+
+let defaultLineChart = () => {
+  console.log("test");
+  trafficChart = new Chart(trafficHourlyCanvas, {
+    type: "line",
+    data: hourlyLineData,
+    options: trafficOptions,
+  });
+  return trafficChart;
+};
+
+// Load default chart on page load
+(() => {
+  defaultLineChart();
+})();
+
+/*
+FIGURE THIS OUT
+function addData(chart, label, data) {
+  console.log("test", { label, data });
+  chart.data.labels.push(label);
+  chart.data.datasets[0].data.push(data);
+  chart.update();
+}
+
+function removeData(chart) {
+  chart.data.labels = [];
+  chart.data.datasets[0].data = [];
+  chart.update();
+}
+
+hourlyFilterButton.addEventListener("click", (e) => {
+  console.log(
+    "hourlyLineData",
+    hourlyLineData.labels,
+    hourlyLineData.datasets[0].data
+  );
+  removeData(trafficChart);
+  addData(trafficChart, hourlyLineData.labels, hourlyLineData.datasets[0].data);
 });
+
+dailyFilterButton.addEventListener("click", (e) => {
+  console.log(
+    "dailyLineData",
+    dailyLineData.labels,
+    dailyLineData.datasets[0].data
+  );
+  removeData(trafficChart);
+
+  addData(trafficChart, dailyLineData.labels, dailyLineData.datasets[0].data);
+});
+*/
 
 //bar chart
 const dailyCanvas = document.getElementById("daily-chart");
