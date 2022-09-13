@@ -107,6 +107,7 @@ button {
   height: 30px;
   text-align: center;
   padding: 10px;
+  margin-bottom: 5px;
   position: relative;
   background-color: rgb(100, 100, 162);
   border-radius: 0.5em;
