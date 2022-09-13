@@ -140,7 +140,7 @@ let monthlyLineData = {
 let trafficOptions = {
   backgroundColor: "rgba(112, 104, 201, .5)",
   fill: true,
-  aspectRatio: 2.5,
+  aspectRatio: 2,
   animation: {
     duration: 0,
   },
