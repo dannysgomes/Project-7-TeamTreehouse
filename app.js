@@ -61,12 +61,19 @@ const trafficWeeklyCanvas = document.getElementById("traffic-weekly-chart");
 const trafficMonthlyCanvas = document.getElementById("traffic-monthly-chart");
 
 const hourlyLineData = {
-  dataPoints: [750, 1250, 1000, 2000, 1500, 1750],
-  labels: ["16-22", "23-29", "30-5", "6-12", "13-19", "20-26"],
+  dataPoints: [100, 200, 450, 1000, 2500, 500],
+  labels: [
+    "0000-0400",
+    "0400-0800",
+    "0800-1200",
+    "1200-1600",
+    "1600-2000",
+    "2000-2400",
+  ],
 };
 
 const dailyLineData = {
-  dataPoints: [2000, 1250, 500, 1000, 1200, 1100, 10],
+  dataPoints: [2500, 2300, 2000, 1000, 500, 750, 1000],
   labels: [
     "Sunday",
     "Monday",
@@ -79,43 +86,34 @@ const dailyLineData = {
 };
 
 const weeklyLineData = {
-  dataPoints: [300, 600, 250, 400, 500, 1000, 900, 1900, 2100, 1500, 1800],
-  labels: [
-    "16-22",
-    "23-29",
-    "30-5",
-    "6-12",
-    "13-19",
-    "20-26",
-    "27-3",
-    "4-10",
-    "11-17",
-    "18-24",
-    "25-31",
-  ],
+  dataPoints: [10000, 6000, 2000, 4000],
+  labels: ["Week 1", "Week 2", "Week 3", "Week 4"],
 };
 
 const monthlyLineData = {
-  dataPoints: [2500, 1250, 500, 500, 500, 1100, 900, 1000, 2000, 1700, 1500],
+  dataPoints: [
+    2500, 1250, 500, 500, 500, 1100, 900, 1000, 2000, 1700, 1500, 1600,
+  ],
   labels: [
-    "16-22",
-    "23-29",
-    "30-5",
-    "6-12",
-    "13-19",
-    "20-26",
-    "27-3",
-    "4-10",
-    "11-17",
-    "18-24",
-    "25-31",
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ],
 };
 
 const defaultLineData = {
   datasets: [
     {
-      data: [...hourlyLineData.dataPoints],
+      data: [...hourlyLineData.dataPoints], //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
       borderWidth: 1,
     },
   ],
@@ -167,15 +165,15 @@ const defaultLineChart = () => {
   return trafficChart;
 };
 
-// Load default chart on page load
+// Load default chart on page load, Immediately Invoked Function, https://developer.mozilla.org/en-US/docs/Glossary/IIFE
 (() => {
   defaultLineChart();
 })();
 
 function updateChart(labels, data) {
   // Clear existing data
-  trafficChart.data.labels.splice(0, labels.length + 1);
-  trafficChart.data.datasets[0].data.splice(0, data.length + 1);
+  trafficChart.data.labels = [];
+  trafficChart.data.datasets[0].data = [];
   trafficChart.update();
 
   // add new data
