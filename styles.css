@@ -496,6 +496,7 @@ input:checked + .slider:before {
     padding-left: 7px;
     padding-right: 15px;
     margin: 0 0 0 -15px;
+    position: sticky;
   }
 
   #navigation-group {
