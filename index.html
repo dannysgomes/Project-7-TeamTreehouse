@@ -77,9 +77,10 @@
         </div>
 
         <!--alert banner -->
-        <div class="alert" id="alert">
+        <div class="alert" id="alertBanner">
 
             <!-- JS will insert here -->
+            <div id="initial-alert"></div>
             <div id="notificationOne"></div>
             <div id="notificationTwo"></div>
         </div>
@@ -88,10 +89,10 @@
         <section class="traffic">
             <div class="traffic-header">
                 <h3 class="section-label">Traffic</h3>
-                <ul class="traffic-nav">
+                <ul class="traffic-nav" id="traffic-nav-btn-group">
                     <li class="traffic-nav-link" id="hourlyFilterButton">Hourly</li>
                     <li class="traffic-nav-link" id="dailyFilterButton">Daily</li>
-                    <li class="traffic-nav-link active" id="weeklyFilterButton">Weekly</li>
+                    <li class="traffic-nav-link" id="weeklyFilterButton">Weekly</li>
                     <li class="traffic-nav-link" id="monthlyFilterButton">Monthly</li>
                 </ul>
             </div>
