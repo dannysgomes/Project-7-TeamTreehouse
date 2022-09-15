@@ -462,6 +462,12 @@ input:checked + .slider:before {
 .main {
   /*grid-area: main;*/
   display: grid;
+  grid-template-columns: minmax(0, 100vw); /*fixed the horizontal scrolling*/
+
+}
+
+section {
+  margin-right: -15px;
 }
 
 .widget-container-full,
@@ -475,6 +481,7 @@ input:checked + .slider:before {
 
 @media (min-width: 768px) {
   .main {
+    
     grid-template-columns: 50%;
     padding-left: 15px;
   }
@@ -483,7 +490,7 @@ input:checked + .slider:before {
     width: 90vw;
   }
   .widget-container-half {
-    width: 45vw;
+    width: 40vw;
   }
   .grid-container {
     grid-template-columns: 55px 1fr;
@@ -526,6 +533,9 @@ input:checked + .slider:before {
     grid-column: 1 / span 1;
   }
 
+  
+    
+
   .mobile {
     grid-column: 2 / span 1;
     border-left: 2px solid rgb(200, 197, 197);
@@ -550,6 +560,7 @@ input:checked + .slider:before {
 
   .main-header {
     display: flex;
+    margin-right: -15px;
   }
 
   .alert {
@@ -580,6 +591,7 @@ input:checked + .slider:before {
     display: inline-flex;
     flex-direction: row;
     justify-content: space-between;
+    
   }
 
   .members-container {
@@ -616,10 +628,19 @@ input:checked + .slider:before {
     grid-column: 1 / span 1;
   }
 
+  .members {
+    padding-right: 60px;
+  }
   .activity,
   .settings {
     grid-column: 2 / span 1;
     border-left: 2px solid rgb(200, 197, 197);
+  }
+
+  .social-container {
+    width: 100%;
+    padding: 15px;
+  
   }
 
   .message {
