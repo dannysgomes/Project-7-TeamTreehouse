@@ -91,6 +91,7 @@ button {
 
 .bell:hover {
   fill: rgb(3, 210, 3);
+  transition: 2s;
 }
 
 .alert {
